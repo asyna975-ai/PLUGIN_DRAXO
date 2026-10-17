@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#090b12">
+<title>DRAXO Plugin Studio</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap');
+:root{--bg:#090b12;--side:#0d1019;--panel:#10141f;--panel2:#141a27;--line:#222a3a;--text:#e9edf8;--muted:#7f8ba2;--purple:#9c7bff;--purple2:#6d52d9;--cyan:#5dd7e8;--green:#4fdda0;--orange:#f1ad68;--red:#ff777d;--mono:Consolas,Monaco,'Courier New',monospace}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:13px Vazirmatn,Tahoma,sans-serif;overflow-x:hidden}button,input,textarea{font:inherit}button{cursor:pointer}.ambient{position:fixed;pointer-events:none;filter:blur(90px);opacity:.13;z-index:-1;border-radius:50%}.ambient-one{width:400px;height:400px;background:#7048ff;top:-180px;left:20%}.ambient-two{width:350px;height:350px;background:#1d9cb3;bottom:-220px;right:20%}.shell{display:flex;min-height:100vh}.sidebar{width:250px;background:rgba(13,16,25,.96);border-left:1px solid #202637;padding:22px 14px 13px;display:flex;flex-direction:column;flex-shrink:0;position:relative;z-index:2}.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text);padding:2px 7px 25px}.brand b{display:block;letter-spacing:2px;font:800 17px var(--mono)}.brand b span{color:var(--purple);padding-right:4px}.brand small{display:block;color:#78849b;font:9px var(--mono);letter-spacing:1px;margin-top:4px}.brand-symbol{width:39px;height:39px;border:1px solid #5c4c9a;border-radius:12px;display:flex;align-items:center;justify-content:center;gap:3px;background:linear-gradient(145deg,#241d40,#10141f);transform:rotate(-5deg)}.brand-symbol i{display:block;width:5px;border-radius:5px;background:var(--purple);box-shadow:0 0 10px #9873ff66}.brand-symbol i:nth-child(1){height:12px}.brand-symbol i:nth-child(2){height:22px}.brand-symbol i:nth-child(3){height:16px;background:var(--cyan)}.server-card{border:1px solid #283044;border-radius:12px;background:linear-gradient(130deg,#171c2b,#10141d);padding:13px 12px;margin-bottom:24px}.server-line{font:9px var(--mono);color:#8b98b0;display:flex;align-items:center;gap:6px}.live-dot{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 8px #4fdda088}.server-ver{margin-right:auto;color:#666f86}.server-name{font-weight:800;font-size:16px;letter-spacing:1px;margin:12px 0 2px}.server-name span{color:var(--purple);font-size:12px}.server-card small{font-size:9px;color:#69758b}.nav-label{font:9px var(--mono);letter-spacing:1.3px;color:#55617a;padding:0 10px 9px}.nav{width:100%;display:flex;align-items:center;gap:10px;border:1px solid transparent;background:transparent;color:#8c98ae;padding:10px;border-radius:9px;text-align:right;margin-bottom:4px;transition:.15s}.nav:hover{background:#151a28;color:#e5e9f5}.nav.active{border-color:#38305a;background:linear-gradient(90deg,#201b34,#151825);color:#e9e1ff;box-shadow:inset -2px 0 var(--purple)}.nav-icon{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;background:#171d2b;color:#a9b5cb;font:15px var(--mono)}.nav.active .nav-icon{background:#30264e;color:#c5afff}.nav span:nth-child(2){flex:1}.nav b{display:block;font-size:11px;font-weight:600}.nav small{display:block;font:9px var(--mono);color:#63718a;margin-top:3px;direction:ltr;text-align:right}.nav kbd{font:9px var(--mono);color:#536078}.tools-label{margin-top:19px}.sidebar-bottom{margin-top:auto}.profile{display:flex;align-items:center;gap:9px;border-top:1px solid #202638;padding:16px 2px 12px}.profile-avatar,.top-avatar{width:31px;height:31px;border:1px solid #4e427a;border-radius:9px;background:#2a2245;color:#c9b9ff;display:grid;place-items:center;font-weight:800}.profile b{display:block;font-size:10px}.profile small{display:block;color:#67748b;font:9px var(--mono);margin-top:3px}.profile-menu{margin-right:auto;color:#78849a}.sidebar-foot{font:8px var(--mono);color:#536078;display:flex;justify-content:space-between}.sidebar-foot span{color:#4fbd91}.main{min-width:0;flex:1;padding:0 clamp(18px,3vw,44px);max-width:1800px;margin:0 auto}.topbar{height:66px;border-bottom:1px solid #1c2432;display:flex;align-items:center;justify-content:space-between}.crumb{display:flex;align-items:center;gap:10px;font:10px var(--mono);letter-spacing:.5px;color:#66738a}.crumb b{color:#3a4558}.crumb strong{color:#c0c8d9;font-weight:500}.topbar-right{display:flex;align-items:center;gap:10px}.status-chip{display:flex;align-items:center;gap:7px;border:1px solid #273449;border-radius:7px;padding:7px 9px;font-size:10px;color:#8c9ab1}.status-chip i{width:5px;height:5px;border-radius:50%;background:var(--green)}.icon-button{width:30px;height:30px;border:1px solid #273044;border-radius:8px;background:#111723;color:#b6c0d3}.top-avatar{width:30px;height:30px}.page{display:none;padding-top:26px;animation:arrive .22s ease}.page.active{display:block}@keyframes arrive{from{opacity:.45;transform:translateY(4px)}to{opacity:1;transform:none}}.welcome-row{display:flex;justify-content:space-between;align-items:center;gap:18px;margin-bottom:25px}.overline,.section-kicker{font:9px var(--mono);letter-spacing:1.5px;color:#9a86ed}.overline{display:flex;align-items:center;gap:8px}.tiny-pulse{width:6px;height:6px;border-radius:50%;background:var(--cyan);box-shadow:0 0 9px #5dd7e8}.welcome-row h1,.page-header h1{font-size:27px;margin:9px 0 5px;letter-spacing:-.5px}.gradient-text{color:var(--purple)}.welcome-row p,.page-header p{margin:0;color:#8490a6;font-size:11px;line-height:1.9}.date-block{border-right:1px solid #34334d;padding-right:18px;min-width:130px}.date-block span,.date-block small{display:block;color:#68758c;font:8px var(--mono);letter-spacing:1px}.date-block b{display:block;font:22px var(--mono);color:#d6d9e8;margin:5px 0}.stats-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:21px}.stat-card{border:1px solid var(--line);border-radius:11px;background:linear-gradient(145deg,#121724,#0e121c);padding:14px 15px;min-width:0}.stat-top{display:flex;align-items:center;justify-content:space-between;color:#8591a7;font-size:10px}.stat-icon{font-style:normal;width:27px;height:27px;display:grid;place-items:center;border-radius:8px;font:14px var(--mono)}.violet{background:#28213f;color:#b9a3ff}.blue{background:#192b3e;color:#7bcaf4}.green{background:#19352e;color:#66e2b0}.orange{background:#3b2b21;color:#f1b579}.stat-card>strong{display:block;font:26px var(--mono);margin:11px 0 6px;white-space:nowrap}.stat-card small{font-size:9px;color:#6e7b91;white-space:nowrap}.positive{color:var(--green)}.state-word{font-size:20px!important;color:var(--green)}.work-grid{display:grid;grid-template-columns:minmax(0,1fr) 270px;gap:15px;align-items:start}.editor-card,.rail-card,.console-card,.panel,.terminal-panel,.doc-card{background:var(--panel);border:1px solid var(--line);border-radius:11px;overflow:hidden}.card-heading{display:flex;justify-content:space-between;align-items:center;padding:17px 18px 14px}.card-heading h2{margin:5px 0 0;font-size:14px}.heading-actions{display:flex;align-items:center;gap:9px}.language-pill{display:flex;align-items:center;gap:6px;font:9px var(--mono);color:#91a0b6;border:1px solid #283448;border-radius:6px;padding:6px 8px}.language-pill i{width:5px;height:5px;background:#a78bfa;border-radius:50%}.quiet-btn{border:1px solid #283247;border-radius:6px;padding:6px 9px;background:#141b28;color:#9ba7bc;font-size:9px}.quiet-btn:hover{border-color:#645294;color:#d2c5ff}.editor-tabs{display:flex;align-items:stretch;min-height:38px;background:#0d111a;border-top:1px solid #202838;border-bottom:1px solid #202838;padding:0 9px;gap:3px;overflow-x:auto}.file-tab{border:0;border-bottom:2px solid transparent;background:transparent;color:#6f7d94;padding:0 10px;display:flex;align-items:center;gap:7px;white-space:nowrap;font:10px var(--mono)}.file-tab.active{color:#d6dced;border-bottom-color:var(--purple);background:#151a27}.file-tab b{font-weight:400;color:#526077}.php-badge,.yaml-badge,.md-badge{font:9px var(--mono);color:#c5a9ff}.yaml-badge{color:#70c8ee}.md-badge{color:#68dca9}.add-tab{border:0;background:transparent;color:#8a96aa;font-size:18px;padding:0 10px}.editor-wrap{display:flex;direction:ltr;min-height:320px;background:#0b0e15}.line-numbers{width:42px;flex-shrink:0;background:#0b0e15;color:#414d63;text-align:right;padding:16px 10px 16px 0;font:11px/1.85 var(--mono);white-space:pre;user-select:none;border-right:1px solid #1b2230}.editor-wrap textarea{flex:1;width:0;min-height:320px;resize:vertical;border:0;outline:0;background:transparent;color:#c5d1e4;padding:16px 15px;font:11px/1.85 var(--mono);white-space:pre;tab-size:4;caret-color:var(--purple);overflow:auto}.editor-wrap textarea::selection{background:#4d3c7777}.editor-status{height:27px;background:#111722;border-top:1px solid #1b2330;display:flex;align-items:center;gap:14px;padding:0 12px;color:#68768d;font:8px var(--mono)}.editor-status span:first-child{display:flex;align-items:center;gap:5px}.editor-status span:first-child i{width:5px;height:5px;background:var(--green);border-radius:50%}.editor-status-right{margin-right:auto}.editor-bottom{display:flex;gap:7px;padding:12px;flex-wrap:wrap;border-top:1px solid #202838}.btn{border-radius:7px;padding:9px 12px;font-size:10px;font-weight:600;border:1px solid transparent;transition:.15s}.btn:hover{filter:brightness(1.12);transform:translateY(-1px)}.btn-primary{background:linear-gradient(135deg,#9878f5,#7254d2);color:white;box-shadow:0 5px 18px #7853dd1c}.btn-ghost{background:#171d2a;border-color:#2a3448;color:#aab5c9}.right-rail{display:grid;gap:13px}.rail-card{padding:0}.rail-title{display:flex;align-items:center;justify-content:space-between;padding:14px 14px 11px}.rail-title h3{margin:0;font-size:11px}.mini-plus{border:1px solid #34304d;background:#211c35;color:#b7a4ff;border-radius:6px;width:23px;height:23px;font-size:17px}.file-tree{padding:0 8px 9px}.tree-folder{display:flex;align-items:center;gap:8px;padding:7px 7px;color:#8d9ab0;font:10px var(--mono)}.tree-folder span{color:#d3ad70}.tree-file{width:100%;display:flex;align-items:center;gap:8px;border:1px solid transparent;border-radius:6px;background:transparent;color:#8190a8;padding:7px 8px 7px 12px;text-align:right;font:10px var(--mono)}.tree-file:hover,.tree-file.active{background:#1c2031;border-color:#2c2b47;color:#ded8f9}.tree-file .file-type{width:18px;height:18px;display:grid;place-items:center;border-radius:4px;background:#2b2243;color:#c2a9ff;font-size:8px}.tree-file .file-type.yml{background:#1b2c3b;color:#78c8e9}.tree-file .file-type.md{background:#19352c;color:#6be1a9}.tree-file .file-type.json{background:#3a3020;color:#e5c37b}.tree-file .file-name{flex:1}.tree-footer{border-top:1px solid #202838;padding:10px 12px;display:flex;flex-direction:column;gap:4px}.tree-footer span{font:8px var(--mono);color:#56647c}.tree-footer b{font:10px var(--mono);color:#94a1b7}.subtle{font:8px var(--mono);color:#53617a}.quick-card{padding-bottom:6px}.quick-action{display:flex;align-items:center;gap:9px;width:calc(100% - 16px);margin:0 8px 5px;padding:9px 7px;border:1px solid transparent;border-radius:7px;background:transparent;text-align:right;color:#a3afc4}.quick-action:hover{background:#171e2b;border-color:#2b354a}.quick-symbol{font:16px var(--mono);color:#c0aaff;width:24px;text-align:center}.green-text{color:var(--green)}.blue-text{color:var(--cyan)}.quick-action span:nth-child(2){flex:1}.quick-action b{display:block;font-size:10px;font-weight:600}.quick-action small{display:block;color:#68778e;font-size:9px;margin-top:3px}.quick-action kbd{font:8px var(--mono);color:#68768c;border:1px solid #30394c;border-radius:4px;padding:3px}.console-card{margin-top:15px}.console-head{display:flex;align-items:center;justify-content:space-between;padding:13px 15px;border-bottom:1px solid #202838}.console-head>div{display:flex;align-items:center;gap:8px}.console-light{width:6px;height:6px;background:var(--green);border-radius:50%;box-shadow:0 0 8px #4fdda066}.console-head h3{margin:0;font-size:11px}.console-head small{font:8px var(--mono);color:#5e6b81}.console-log{padding:12px 15px;font:10px/2 var(--mono);color:#9ca9bd;min-height:90px;direction:ltr;text-align:left}.console-log>div{display:flex;gap:12px}.log-time{color:#69768b;min-width:60px}.log-good{color:#6bdfaa}.page-header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:21px}.page-header h1{margin-top:8px}.files-panel{padding:0 15px}.files-toolbar,.files-row{display:grid;grid-template-columns:minmax(180px,1fr) 100px 100px 100px;align-items:center;gap:10px}.files-toolbar{padding:13px 7px;border-bottom:1px solid var(--line);font-size:9px;color:#64728a}.files-row{padding:12px 7px;border-bottom:1px solid #202838;color:#a8b4c9;font:10px var(--mono)}.files-row:last-child{border-bottom:0}.files-row .file-title{display:flex;align-items:center;gap:9px;min-width:0}.files-row .file-title b{font-weight:500;overflow:hidden;text-overflow:ellipsis}.file-open,.file-delete{border:1px solid #303a4d;background:#171e2b;color:#aab7cd;border-radius:5px;padding:5px 8px;font-size:9px;margin-left:4px}.file-delete{color:#f29b9f}.terminal-panel{background:#090c12}.terminal-bar{height:42px;display:flex;align-items:center;gap:12px;padding:0 14px;border-bottom:1px solid #202838;color:#8d9bb1;font:10px var(--mono)}.window-dots{display:flex;gap:5px}.window-dots i{width:7px;height:7px;border-radius:50%;background:#ed777d}.window-dots i:nth-child(2){background:#e7bd6d}.window-dots i:nth-child(3){background:#57d99b}.terminal-readonly{margin-right:auto;color:#66738a;font-size:8px}.big-terminal{min-height:290px;padding:16px;font:11px/2 var(--mono);color:#a3b0c5;direction:ltr;text-align:left;white-space:pre-wrap}.terminal-input{display:flex;align-items:center;gap:10px;padding:12px 14px;border-top:1px solid #202838}.terminal-input>span{color:var(--green);font:18px var(--mono)}.terminal-input input{flex:1;min-width:0;border:0;outline:0;background:transparent;color:#dce5f4;font:11px var(--mono)}.notice{margin-top:14px;border:1px solid #3c3429;background:#191710;border-radius:8px;padding:13px;color:#d4b47d;font-size:10px;line-height:1.9}.project-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}.project-card{border:1px solid var(--line);background:linear-gradient(145deg,#121724,#0e121c);border-radius:11px;padding:17px}.project-card-top{display:flex;justify-content:space-between;align-items:center}.project-glyph{width:37px;height:37px;display:grid;place-items:center;border:1px solid #43365f;background:#241d39;color:#bda7ff;border-radius:9px;font:16px var(--mono)}.project-status{font:8px var(--mono);color:var(--green)}.project-card h3{font-size:13px;margin:16px 0 4px}.project-card p{color:#76839a;font-size:10px;margin:0 0 15px}.project-meta{border-top:1px solid #222a3a;padding-top:12px;display:flex;justify-content:space-between;color:#65738b;font:9px var(--mono)}.project-card .btn{width:100%;margin-top:13px}.docs-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.doc-card{padding:18px}.doc-number{font:9px var(--mono);letter-spacing:1px;color:#9d86ef}.doc-card h3{font-size:14px;margin:9px 0 12px}.doc-card pre{margin:0;background:#090d14;border:1px solid #202839;border-radius:7px;padding:13px;overflow:auto;direction:ltr;text-align:left;color:#b9c9e0;font:10px/1.8 var(--mono)}.doc-card p{font-size:10px;color:#7f8ba2;line-height:1.9;margin:12px 0 0}.doc-card .btn{margin-top:12px}footer{display:flex;align-items:center;gap:9px;border-top:1px solid #1c2432;margin-top:30px;padding:17px 0;color:#536078;font-size:9px}.footer-mark{font:10px var(--mono);color:#9882e6;letter-spacing:1px}.footer-right{margin-right:auto;font:8px var(--mono);color:#48566d}.toast{position:fixed;bottom:22px;left:22px;max-width:calc(100vw - 44px);background:#20263a;border:1px solid #51427a;color:#e4ddff;padding:12px 16px;border-radius:9px;box-shadow:0 12px 35px #0007;z-index:10;opacity:0;transform:translateY(8px);pointer-events:none;transition:.2s}.toast.show{opacity:1;transform:translateY(0)}.modal-backdrop{position:fixed;inset:0;background:#05070bc9;z-index:20;display:none;align-items:center;justify-content:center;padding:18px}.modal-backdrop.show{display:flex}.modal{width:100%;max-width:410px;background:#121724;border:1px solid #34314e;border-radius:13px;padding:25px;position:relative;box-shadow:0 20px 90px #0009}.modal-close{position:absolute;top:13px;left:14px;border:0;background:transparent;color:#9ca8bb;font-size:23px}.modal h2{font-size:19px;margin:9px 0}.modal p{font-size:11px;line-height:1.9;color:#7f8ba2}.modal input{width:100%;padding:11px 12px;border-radius:7px;border:1px solid #31384a;background:#0b1019;color:#e9edf8;direction:ltr;text-align:left;outline:0;margin:10px 0}.modal input:focus{border-color:var(--purple)}.modal-actions{display:flex;gap:8px;margin-top:8px}
+body.light{--bg:#eef1f8;--side:#f8f9fd;--panel:#fff;--panel2:#fff;--line:#dce1ec;--text:#202538;--muted:#66738a}body.light .sidebar,body.light .topbar{background:#f8f9fd}body.light .stat-card,body.light .editor-card,body.light .rail-card,body.light .console-card,body.light .panel,body.light .doc-card,body.light .project-card{background:#fff}body.light .editor-wrap,body.light .editor-wrap textarea,body.light .line-numbers,body.light .big-terminal,body.light .terminal-panel{background:#f5f7fb;color:#283047}body.light .editor-tabs,body.light .editor-status,body.light .console-head{background:#f0f3f9}body.light .editor-tabs .file-tab.active,body.light .tree-file.active{background:#e8e9f8;color:#383052}
+@media(max-width:1180px){.work-grid{grid-template-columns:minmax(0,1fr) 235px}.main{padding-left:22px;padding-right:22px}.stats-grid{gap:8px}.stat-card{padding:12px}.stat-card small{font-size:8px}}@media(max-width:930px){.sidebar{width:215px}.work-grid{grid-template-columns:1fr}.right-rail{grid-template-columns:1fr 1fr}.project-grid{grid-template-columns:1fr 1fr}.main{padding:0 17px}.date-block{display:none}}@media(max-width:650px){.shell{display:block}.sidebar{width:100%;padding:12px 12px 8px;border-left:0;border-bottom:1px solid #202637}.brand{padding:0 4px 12px}.server-card,.nav-label,.sidebar-bottom{display:none}.sidebar .nav{display:inline-flex;width:calc(50% - 4px);margin:2px;font-size:10px;padding:7px}.nav-icon{width:24px;height:24px}.nav kbd,.nav small{display:none}.main{padding:0 12px}.topbar{height:51px}.page{padding-top:18px}.welcome-row h1,.page-header h1{font-size:23px}.welcome-row p{max-width:350px}.stats-grid{grid-template-columns:1fr 1fr;gap:8px}.stat-card>strong{font-size:23px}.work-grid{gap:11px}.right-rail{grid-template-columns:1fr}.card-heading{padding:13px}.editor-bottom{gap:6px;padding:9px}.btn{font-size:9px;padding:9px}.editor-wrap,.editor-wrap textarea{min-height:290px}.files-toolbar,.files-row{grid-template-columns:minmax(100px,1fr) 55px 55px 82px;gap:5px}.files-toolbar{font-size:8px}.files-row{font-size:9px;padding:10px 3px}.file-open,.file-delete{padding:5px 6px;margin-left:1px}.project-grid,.docs-grid{grid-template-columns:1fr}.page-header{align-items:flex-start}.page-header>.btn{white-space:nowrap}.terminal-readonly{display:none}.footer-right{display:none}.editor-status{gap:8px;font-size:7px}.editor-status-right{display:none}.welcome-row{margin-bottom:18px}}
+
+</style>
+</head>
+<body>
+<script>
+(function(){const pc=window.matchMedia("(min-width: 900px)").matches;document.documentElement.classList.add(pc?"draxo-pc":"draxo-mobile");})();
+</script>
+<style>
+/* DRAXO gets a different visual treatment on PC and phone */
+html.draxo-pc body .brand small{letter-spacing:2.2px}
+html.draxo-pc body .main{max-width:none}
+html.draxo-pc body .welcome-row{padding:24px 26px;border:1px solid #292641;border-radius:20px;background:linear-gradient(120deg,rgba(123,72,220,.13),rgba(20,25,40,.35))}
+html.draxo-mobile body .brand{justify-content:center}
+html.draxo-mobile body .topbar{position:sticky;top:0;z-index:10;background:rgba(12,15,25,.94);backdrop-filter:blur(12px)}
+html.draxo-mobile body .welcome-row{padding:16px 13px;border-radius:15px;background:linear-gradient(140deg,rgba(123,72,220,.17),rgba(20,25,40,.25))}
+html.draxo-mobile body .sidebar .nav{border-radius:12px}
+@media(max-width:650px){html.draxo-mobile body .sidebar .nav{width:calc(50% - 4px)}}
+</style>
+
+<div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+<div class="shell">
+  <aside class="sidebar">
+    <a class="brand" href="#" data-page="workspace"><span class="brand-symbol"><i></i><i></i><i></i></span><span><b>DRAXO<span>//</span></b><small>DRAXO PLUGIN STUDIO</small></span></a>
+    <div class="server-card"><div class="server-line"><span class="live-dot"></span> WORKSPACE ONLINE <span class="server-ver">v0.9</span></div><div class="server-name">DRAXO STUDIO <span>✦</span></div><small>PocketMine Development Environment</small></div>
+    <div class="nav-label">DEVELOPMENT</div>
+    <button class="nav active" data-page="workspace"><span class="nav-icon">⌘</span><span><b>محیط توسعه</b><small>Workspace</small></span><kbd>01</kbd></button>
+    <button class="nav" data-page="files"><span class="nav-icon">▤</span><span><b>فایل‌های پروژه</b><small>Project files</small></span><kbd>02</kbd></button>
+    <button class="nav" data-page="console"><span class="nav-icon">›_</span><span><b>ترمینال و لاگ</b><small>Console</small></span><kbd>03</kbd></button>
+    <button class="nav" data-page="projects"><span class="nav-icon">◫</span><span><b>پروژه‌ها</b><small>Projects</small></span><kbd>04</kbd></button>
+    <div class="nav-label tools-label">TOOLS</div>
+    <button class="nav" data-page="docs"><span class="nav-icon">⌁</span><span><b>راهنمای API</b><small>API quick reference</small></span></button>
+    <div class="sidebar-bottom"><div class="profile"><div class="profile-avatar">H</div><div><b>DRAXO Developer</b><small>Local workspace</small></div><span class="profile-menu">•••</span></div><div class="sidebar-foot">DRAXO BUILD <span>● STABLE UI</span></div></div>
+  </aside>
+  <main class="main">
+    <header class="topbar"><div class="crumb"><span>DRAXO STUDIO</span><b>/</b><strong id="crumb-current">WORKSPACE</strong></div><div class="topbar-right"><div class="status-chip"><i></i> محیط محلی</div><button class="icon-button" id="theme-toggle" title="تغییر حالت">◐</button><button class="top-avatar">H</button></div></header>
+    <section class="page active" id="workspace">
+      <div class="welcome-row"><div><div class="overline"><span class="tiny-pulse"></span> YOUR CODE. YOUR RULES.</div><h1>سلام، توسعه‌دهنده<span class="gradient-text">.</span></h1><p>اینجا کد می‌نویسی، فایل می‌سازی و پروژه‌های PocketMine خودت رو مدیریت می‌کنی.</p></div><div class="date-block"><span>BUILD SESSION</span><b id="clock">--:--:--</b><small>LOCAL DEVELOPMENT</small></div></div>
+      <div class="stats-grid"><div class="stat-card"><div class="stat-top"><span>فایل فعال</span><i class="stat-icon violet">⌘</i></div><strong id="stat-files">3</strong><small><span class="positive">●</span> فایل‌های نمونه پروژه</small></div><div class="stat-card"><div class="stat-top"><span>پروژه‌ها</span><i class="stat-icon blue">◫</i></div><strong id="stat-projects">1</strong><small>ذخیره‌شده در این مرورگر</small></div><div class="stat-card"><div class="stat-top"><span>خطوط کد</span><i class="stat-icon green">≡</i></div><strong id="stat-lines">0</strong><small>در فایل انتخاب‌شده</small></div><div class="stat-card"><div class="stat-top"><span>وضعیت محیط</span><i class="stat-icon orange">⌁</i></div><strong class="state-word">READY</strong><small>ویرایشگر آماده‌ی کار است</small></div></div>
+      <div class="work-grid">
+        <section class="editor-card">
+          <div class="card-heading"><div><span class="section-kicker">CODE WORKBENCH</span><h2>میز کار کدنویسی</h2></div><div class="heading-actions"><span class="language-pill"><i></i> PHP</span><button class="quiet-btn" id="save-code">ذخیره محلی</button></div></div>
+          <div class="editor-tabs"><button class="file-tab active" data-file="Main.php"><span class="php-badge">php</span>Main.php <b>×</b></button><button class="file-tab" data-file="plugin.yml"><span class="yaml-badge">Y</span>plugin.yml <b>×</b></button><button class="file-tab" data-file="README.md"><span class="md-badge">M</span>README.md <b>×</b></button><button class="add-tab" id="new-file" title="فایل جدید">+</button></div>
+          <div class="editor-wrap"><div class="line-numbers" id="line-numbers">1</div><textarea id="editor" spellcheck="false" autocapitalize="off" autocomplete="off" aria-label="کد پروژه"></textarea></div>
+          <div class="editor-status"><span><i></i> UTF-8</span><span id="editor-language">PHP</span><span id="cursor-info">Ln 1, Col 1</span><span class="editor-status-right" id="save-state">تغییرات ذخیره نشده</span></div>
+          <div class="editor-bottom"><button class="btn btn-primary" id="download-current">↓ دانلود فایل</button><button class="btn btn-ghost" id="check-code">✓ بررسی اولیه</button><button class="btn btn-ghost" id="export-project">⇩ خروجی پروژه ZIP</button></div>
+        </section>
+        <aside class="right-rail">
+          <section class="rail-card"><div class="rail-title"><h3>فایل‌های پروژه</h3><button class="mini-plus" id="rail-new-file">+</button></div><div id="file-tree" class="file-tree"></div><div class="tree-footer"><span>PROJECT ROOT</span><b>./DRAXOPlugin</b></div></section>
+          <section class="rail-card quick-card"><div class="rail-title"><h3>میانبرها</h3><span class="subtle">QUICK ACTIONS</span></div><button class="quick-action" id="quick-save"><span class="quick-symbol">⌘</span><span><b>ذخیره پروژه</b><small>ذخیره در مرورگر</small></span><kbd>Ctrl S</kbd></button><button class="quick-action" id="quick-check"><span class="quick-symbol green-text">✓</span><span><b>بررسی کد</b><small>بررسی اولیه ساختار</small></span><kbd>⌘ ↵</kbd></button><button class="quick-action" id="quick-export"><span class="quick-symbol blue-text">⇩</span><span><b>خروجی گرفتن</b><small>دانلود سورس پروژه</small><kbd>ZIP</kbd></button></section>
+        </aside>
+      </div>
+      <section class="console-card"><div class="console-head"><div><span class="console-light"></span><h3>خروجی محیط</h3><small>DEVELOPER CONSOLE</small></div><button class="quiet-btn" id="clear-console">پاک‌کردن لاگ</button></div><div id="console-log" class="console-log"><div><span class="log-time">[DRAXO]</span><span class="log-good">Workspace initialized successfully.</span></div><div><span class="log-time">[INFO]</span><span>PocketMine project template loaded.</span></div><div><span class="log-time">[HINT]</span><span>کد رو تغییر بده و «بررسی اولیه» رو بزن.</span></div></div></section>
+    </section>
+    <section class="page" id="files">
+      <div class="page-header"><div><span class="section-kicker">PROJECT EXPLORER</span><h1>فایل‌های پروژه</h1><p>فایل‌های کد را باز کن، ویرایش کن یا فایل جدید بساز.</p></div><button class="btn btn-primary" id="files-new">+ فایل جدید</button></div>
+      <div class="panel files-panel"><div class="files-toolbar"><span>نام فایل</span><span>زبان</span><span>حجم</span><span>عملیات</span></div><div id="files-table"></div></div>
+    </section>
+    <section class="page" id="console">
+      <div class="page-header"><div><span class="section-kicker">DEBUG CENTER</span><h1>ترمینال و لاگ</h1><p>پیام‌های بررسی اولیه کد در این قسمت نمایش داده می‌شوند.</p></div><button class="btn btn-ghost" id="console-clear-page">پاک‌کردن خروجی</button></div>
+      <div class="terminal-panel"><div class="terminal-bar"><div class="window-dots"><i></i><i></i><i></i></div><span>nexus@hulk: ~/DRAXOPlugin</span><span class="terminal-readonly">READ-ONLY DEMO</span></div><div id="big-terminal" class="big-terminal"></div><div class="terminal-input"><span>›</span><input id="fake-command" placeholder="برای نمونه، help بنویس..." autocomplete="off"><button class="btn btn-primary" id="run-fake-command">اجرا</button></div></div>
+      <div class="notice"><b>توجه:</b> این ترمینال نمایشی است و فرمان‌های واقعی سیستم‌عامل یا سرور PocketMine را اجرا نمی‌کند.</div>
+    </section>
+    <section class="page" id="projects">
+      <div class="page-header"><div><span class="section-kicker">YOUR WORK</span><h1>پروژه‌های من</h1><p>پروژه‌ها در حافظه مرورگر این دستگاه ذخیره می‌شوند.</p></div><button class="btn btn-primary" id="create-project">+ پروژه جدید</button></div>
+      <div class="project-grid" id="project-cards"></div>
+    </section>
+    <section class="page" id="docs">
+      <div class="page-header"><div><span class="section-kicker">DEVELOPER NOTES</span><h1>راهنمای سریع API</h1><p>چند نمونه کوتاه برای شروع کدنویسی پلاگین‌های PocketMine-MP.</p></div></div>
+      <div class="docs-grid"><article class="doc-card"><span class="doc-number">01 / LIFECYCLE</span><h3>شروع پلاگین</h3><pre><code>protected function onEnable() : void{
+    $this->getLogger()->info("Plugin enabled");
+}</code></pre><p>این متد هنگام فعال‌شدن پلاگین فراخوانی می‌شود.</p></article><article class="doc-card"><span class="doc-number">02 / COMMANDS</span><h3>ثبت دستور</h3><pre><code>public function onCommand(
+    CommandSender $sender,
+    Command $command,
+    string $label,
+    array $args
+) : bool { return true; }</code></pre><p>دستور باید در plugin.yml تعریف شود.</p></article><article class="doc-card"><span class="doc-number">03 / MANIFEST</span><h3>plugin.yml</h3><pre><code>name: DRAXOPlugin
+main: DRAXO\\Main
+version: 1.0.0
+api: ["5.0.0"]</code></pre><p>نسخه API را مطابق نسخه نصب‌شده سرور تعیین کن.</p></article><article class="doc-card"><span class="doc-number">04 / BUILD PIPELINE</span><h3>ساخت PHAR</h3><p>این رابط به‌تنهایی فایل PHAR کامپایل نمی‌کند. برای خروجی نهایی، یک سرویس سمت سرور لازم است که سورس را اعتبارسنجی و به‌صورت امن بسته‌بندی کند.</p><button class="btn btn-ghost" data-open-workspace>رفتن به ویرایشگر ←</button></article></div>
+    </section>
+    <footer><span class="footer-mark">DRAXO //</span> ساخته‌شده برای توسعه‌دهنده‌ها <span class="footer-right">DRAXO STUDIO · LOCAL MODE</span></footer>
+  </main>
+</div>
+<div class="toast" id="toast"></div>
+<div class="modal-backdrop" id="modal"><div class="modal"><button class="modal-close" id="modal-close">×</button><span class="section-kicker">NEW SOURCE FILE</span><h2>فایل جدید بساز</h2><p>نام فایل رو همراه پسوند وارد کن، مثل Economy.php یا config.yml.</p><input id="new-file-name" placeholder="Example.php" maxlength="60"><div class="modal-actions"><button class="btn btn-primary" id="create-file-confirm">ساخت فایل</button><button class="btn btn-ghost" id="modal-cancel">انصراف</button></div></div></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script><script>
+const $=id=>document.getElementById(id);
+// Each browser profile gets a private local workspace namespace. Data stays on this device/browser.
+let draxoProfileId=localStorage.getItem("draxo-profile-id");
+if(!draxoProfileId){draxoProfileId=(crypto.randomUUID?crypto.randomUUID():Date.now().toString(36)+Math.random().toString(36).slice(2));localStorage.setItem("draxo-profile-id",draxoProfileId)}
+const profileKey=key=>"draxo-"+draxoProfileId+"-"+key;
+
+const defaultFiles={
+"Main.php":`<?php
+
+declare(strict_types=1);
+
+namespace DRAXO\\Plugin;
+
+use pocketmine\\plugin\\PluginBase;
+use pocketmine\\command\\Command;
+use pocketmine\\command\\CommandSender;
+
+final class Main extends PluginBase{
+
+    protected function onEnable() : void{
+        $this->getLogger()->info("DRAXO Plugin enabled!");
+    }
+
+    public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool{
+        if($command->getName() === "hulk"){
+            $sender->sendMessage("§dDRAXO §7» §fPlugin is working!");
+            return true;
+        }
+        return false;
+    }
+}
+`,
+"plugin.yml":`name: DRAXOPlugin
+main: DRAXO\\Plugin\\Main
+version: "1.0.0"
+api: ["5.0.0"]
+author: DRAXO
+description: A PocketMine plugin made in DRAXO Studio
+commands:
+  hulk:
+    description: Test the DRAXO plugin
+    usage: "/hulk"
+`,
+"README.md":`# DRAXOPlugin
+
+A starter PocketMine-MP plugin project.
+
+## Included
+- Main.php: plugin entry class and sample command
+- plugin.yml: plugin manifest
+
+## Before using
+Check the API version against your exact PocketMine-MP build.
+Test on a local server before production. This browser studio does not
+compile or execute PHP and does not produce a .phar file by itself.
+`
+};
+let files=JSON.parse(localStorage.getItem(profileKey("files"))||"null")||{...defaultFiles};
+let activeFile="Main.php",savedSnapshot=JSON.stringify(files),projectList=JSON.parse(localStorage.getItem(profileKey("projects"))||"null")||[{name:"DRAXOPlugin",version:"1.0.0",updated:new Date().toLocaleDateString("fa-IR")}];
+let toastTimer;
+function toast(msg){const t=$("toast");t.textContent=msg;t.classList.add("show");clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove("show"),2600)}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function ext(name){return (name.split(".").pop()||"txt").toLowerCase()}
+function typeLabel(name){const e=ext(name);return e==="php"?"php":e==="yml"||e==="yaml"?"Y":e==="md"?"M":e==="json"?"{}":"txt"}
+function language(name){const e=ext(name);return e==="php"?"PHP":e==="yml"||e==="yaml"?"YAML":e==="md"?"MARKDOWN":e==="json"?"JSON":"TEXT"}
+function sizeOf(s){return new Blob([s]).size}
+function fmtSize(n){return n<1024?n+" B":(n/1024).toFixed(1)+" KB"}
+function go(page){
+ document.querySelectorAll(".page").forEach(p=>p.classList.toggle("active",p.id===page));
+ document.querySelectorAll(".nav[data-page]").forEach(b=>b.classList.toggle("active",b.dataset.page===page));
+ const names={workspace:"WORKSPACE",files:"PROJECT FILES",console:"CONSOLE",projects:"PROJECTS",docs:"API NOTES"};
+ $("crumb-current").textContent=names[page]||"WORKSPACE";
+ if(page==="files")renderFilesTable();if(page==="projects")renderProjects();if(page==="console")renderBigTerminal();
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+document.querySelectorAll("[data-page]").forEach(b=>b.addEventListener("click",()=>go(b.dataset.page)));
+document.querySelectorAll("[data-open-workspace]").forEach(b=>b.addEventListener("click",()=>go("workspace")));
+function updateEditor(){
+ if(!(activeFile in files))files[activeFile]="";
+ $("editor").value=files[activeFile];
+ $("editor-language").textContent=language(activeFile);
+ document.querySelectorAll(".file-tab").forEach(b=>b.classList.toggle("active",b.dataset.file===activeFile));
+ renderLineNumbers();renderTree();updateStats();$("save-state").textContent=JSON.stringify(files)===savedSnapshot?"ذخیره‌شده":"تغییرات ذخیره نشده";
+}
+function renderTabs(){
+ const tabs=$("workspace").querySelector(".editor-tabs");
+ tabs.querySelectorAll(".file-tab").forEach(b=>b.remove());
+ const add=tabs.querySelector(".add-tab");
+ Object.keys(files).forEach(name=>{
+  const b=document.createElement("button");b.className="file-tab";b.dataset.file=name;
+  const e=ext(name);let badge=e==="php"?"php":e==="yml"||e==="yaml"?"Y":e==="md"?"M":e==="json"?"{}":"txt";
+  b.innerHTML=`<span class="${e==="php"?"php-badge":e==="md"?"md-badge":"yaml-badge"}">${badge}</span>${escapeHtml(name)} <b>×</b>`;
+  b.addEventListener("click",ev=>{if(ev.target.tagName==="B"){if(Object.keys(files).length===1){toast("حداقل یک فایل باید باقی بماند.");return}delete files[name];if(activeFile===name)activeFile=Object.keys(files)[0];renderTabs();updateEditor();return}files[activeFile]=$("editor").value;activeFile=name;updateEditor()});
+  tabs.insertBefore(b,add);
+ });
+}
+function renderTree(){
+ const tree=$("file-tree");tree.innerHTML='<div class="tree-folder"><span>▾</span> DRAXOPlugin</div>';
+ Object.keys(files).forEach(name=>{
+  const b=document.createElement("button");b.className="tree-file"+(name===activeFile?" active":"");
+  const e=ext(name);b.innerHTML=`<span class="file-type ${["yml","yaml"].includes(e)?"yml":e==="md"?"md":e==="json"?"json":""}">${typeLabel(name)}</span><span class="file-name">${escapeHtml(name)}</span>`;
+  b.addEventListener("click",()=>{files[activeFile]=$("editor").value;activeFile=name;renderTabs();updateEditor()});tree.appendChild(b)
+ });
+}
+function renderLineNumbers(){
+ const count=Math.max(1,$("editor").value.split("\n").length);
+ $("line-numbers").textContent=Array.from({length:count},(_,i)=>i+1).join("\n");
+ $("stat-lines").textContent=count;
+}
+function updateStats(){
+ $("stat-files").textContent=Object.keys(files).length;
+ $("stat-projects").textContent=projectList.length;
+ $("stat-lines").textContent=Math.max(1,$("editor").value.split("\n").length);
+}
+function saveAll(silent=false){
+ files[activeFile]=$("editor").value;
+ localStorage.setItem(profileKey("files"),JSON.stringify(files));
+ savedSnapshot=JSON.stringify(files);
+ $("save-state").textContent="ذخیره‌شده";
+ projectList[0]={name:"DRAXOPlugin",version:"1.0.0",updated:new Date().toLocaleDateString("fa-IR")};
+ localStorage.setItem(profileKey("projects"),JSON.stringify(projectList));
+ updateStats();if(!silent)toast("پروژه در حافظه همین مرورگر ذخیره شد.");
+}
+$("editor").addEventListener("input",()=>{files[activeFile]=$("editor").value;renderLineNumbers();$("save-state").textContent="تغییرات ذخیره نشده";updateStats()});
+$("editor").addEventListener("click",updateCursor);$("editor").addEventListener("keyup",updateCursor);
+function updateCursor(){const t=$("editor"),before=t.value.slice(0,t.selectionStart),line=before.split("\n").length,col=before.length-(before.lastIndexOf("\n")+1)+1;$("cursor-info").textContent=`Ln ${line}, Col ${col}`}
+$("editor").addEventListener("keydown",e=>{if(e.key==="Tab"){e.preventDefault();const s=e.target.selectionStart,en=e.target.selectionEnd;e.target.value=e.target.value.slice(0,s)+"    "+e.target.value.slice(en);e.target.selectionStart=e.target.selectionEnd=s+4;e.target.dispatchEvent(new Event("input"))}if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==="s"){e.preventDefault();saveAll()}if((e.ctrlKey||e.metaKey)&&e.key==="Enter"){e.preventDefault();checkCode()}});
+function addLog(message,type="info"){
+ const row=document.createElement("div");const now=new Date().toLocaleTimeString("en-GB",{hour12:false});
+ const stamp=document.createElement("span");stamp.className="log-time";stamp.textContent="["+now+"]";
+ const msg=document.createElement("span");msg.textContent=message;msg.className=type==="good"?"log-good":type==="error"?"log-error":"";
+ row.append(stamp,msg);$("console-log").appendChild(row);$("console-log").scrollTop=$("console-log").scrollHeight;
+ if($("big-terminal"))renderBigTerminal();
+}
+function checkCode(){
+ files[activeFile]=$("editor").value;const code=files[activeFile];let issues=[];
+ if(activeFile.endsWith(".php")){
+  if(!code.includes("<?php"))issues.push("هشدار: تگ شروع PHP پیدا نشد.");
+  if((code.match(/\{/g)||[]).length!==(code.match(/\}/g)||[]).length)issues.push("خطا احتمالی: تعداد آکولادهای باز و بسته برابر نیست.");
+  if(!code.includes("namespace "))issues.push("یادآوری: namespace را با مقدار main در plugin.yml هماهنگ کن.");
+  if(!code.includes("PluginBase"))issues.push("یادآوری: کلاس ورودی باید در صورت نیاز از PluginBase ارث‌بری کند.");
+ }else if(activeFile==="plugin.yml"){
+  if(!/^name:\s*\S+/m.test(code))issues.push("خطا احتمالی: فیلد name در plugin.yml وجود ندارد.");
+  if(!/^main:\s*\S+/m.test(code))issues.push("خطا احتمالی: فیلد main در plugin.yml وجود ندارد.");
+  if(!/^api:\s*/m.test(code))issues.push("هشدار: نسخه api تعریف نشده است.");
+ }else if(!code.trim())issues.push("فایل خالی است.");
+ if(!issues.length){addLog(`بررسی اولیه ${activeFile}: مورد واضحی پیدا نشد. این بررسی، lint کامل نیست.`,"good");toast("بررسی اولیه تمام شد؛ خطای واضحی پیدا نشد.");}
+ else{issues.forEach(msg=>addLog(msg,msg.startsWith("خطا")?"error":"info"));toast(`بررسی انجام شد: ${issues.length} نکته برای بازبینی.`)}
+}
+$("save-code").addEventListener("click",()=>saveAll());$("quick-save").addEventListener("click",()=>saveAll());
+$("check-code").addEventListener("click",checkCode);$("quick-check").addEventListener("click",checkCode);
+function downloadFile(name,content){const blob=new Blob([content],{type:"text/plain;charset=utf-8"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+$("download-current").addEventListener("click",()=>{files[activeFile]=$("editor").value;downloadFile(activeFile,files[activeFile]);toast("دانلود فایل شروع شد.")});
+async function exportZip(){
+ files[activeFile]=$("editor").value;
+ if(!window.JSZip){toast("کتابخانه ZIP بارگذاری نشد. اتصال اینترنت را بررسی کن.");return}
+ const zip=new JSZip();Object.entries(files).forEach(([name,content])=>zip.file("DRAXOPlugin/"+name,content));
+ zip.file("BUILD-NOTES.txt","DRAXO Studio source export\nThis is source code only. It is not a compiled PHAR.\nVerify PocketMine API compatibility and test before production.\n");
+ const blob=await zip.generateAsync({type:"blob"});const url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="DRAXOPlugin-source.zip";a.click();URL.revokeObjectURL(url);toast("فایل ZIP پروژه آماده شد.")
+}
+$("export-project").addEventListener("click",exportZip);$("quick-export").addEventListener("click",exportZip);
+function renderFilesTable(){
+ const table=$("files-table");table.innerHTML="";
+ Object.entries(files).forEach(([name,content])=>{
+  const row=document.createElement("div");row.className="files-row";
+  const title=document.createElement("div");title.className="file-title";
+  const icon=document.createElement("span");icon.className="file-type "+(["yml","yaml"].includes(ext(name))?"yml":ext(name)==="md"?"md":"");icon.textContent=typeLabel(name);
+  const label=document.createElement("b");label.textContent=name;title.append(icon,label);
+  const lang=document.createElement("span");lang.textContent=language(name);
+  const size=document.createElement("span");size.textContent=fmtSize(sizeOf(content));
+  const ops=document.createElement("div");const open=document.createElement("button");open.className="file-open";open.textContent="باز کردن";open.onclick=()=>{files[activeFile]=$("editor").value;activeFile=name;renderTabs();updateEditor();go("workspace")};
+  const del=document.createElement("button");del.className="file-delete";del.textContent="حذف";del.onclick=()=>{if(Object.keys(files).length===1){toast("حداقل یک فایل باید باقی بماند.");return}delete files[name];if(activeFile===name)activeFile=Object.keys(files)[0];renderTabs();updateEditor();renderFilesTable();toast("فایل حذف شد.")};ops.append(open,del);row.append(title,lang,size,ops);table.append(row)
+ });
+}
+function renderProjects(){
+ const grid=$("project-cards");grid.innerHTML="";
+ projectList.forEach((p,i)=>{const card=document.createElement("article");card.className="project-card";card.innerHTML=`<div class="project-card-top"><div class="project-glyph">⌘</div><span class="project-status">● LOCAL</span></div><h3></h3><p>PocketMine-MP · PHP</p><div class="project-meta"><span>VERSION</span><span></span><span></span></div><button class="btn btn-ghost">باز کردن پروژه</button>`;
+ card.querySelector("h3").textContent=p.name;const spans=card.querySelectorAll(".project-meta span");spans[1].textContent=p.version||"1.0.0";spans[2].textContent=p.updated||"Local";
+ card.querySelector("button").onclick=()=>{go("workspace");toast("پروژه محلی باز شد.")};grid.append(card)});
+ if(!projectList.length)grid.innerHTML='<div class="panel" style="padding:25px;color:#8290a7">هنوز پروژه‌ای ذخیره نشده است.</div>';
+ updateStats()
+}
+function renderBigTerminal(){const el=$("big-terminal");if(el)el.innerHTML=Array.from($("console-log").children).map(row=>row.innerText).join("\n")}
+function clearLogs(){$("console-log").innerHTML="";renderBigTerminal();toast("لاگ‌ها پاک شدند.")}
+$("clear-console").addEventListener("click",clearLogs);$("console-clear-page").addEventListener("click",clearLogs);
+function openModal(){$("modal").classList.add("show");$("new-file-name").value="";setTimeout(()=>$("new-file-name").focus(),50)}
+function closeModal(){$("modal").classList.remove("show")}
+$("new-file").addEventListener("click",openModal);$("rail-new-file").addEventListener("click",openModal);$("files-new").addEventListener("click",openModal);
+$("modal-close").addEventListener("click",closeModal);$("modal-cancel").addEventListener("click",closeModal);
+$("modal").addEventListener("click",e=>{if(e.target===$("modal"))closeModal()});
+function createFile(){
+ let name=$("new-file-name").value.trim();
+ if(!name||name.includes("/")||name.includes("\\")||name==="."||name===".."){toast("یک نام فایل معتبر وارد کن.");return}
+ if(!name.includes("."))name+=".php";
+ if(files[name]!==undefined){toast("این فایل از قبل وجود دارد.");return}
+ files[activeFile]=$("editor").value;files[name]=name.endsWith(".php")?"<?php\n\ndeclare(strict_types=1);\n\nnamespace DRAXO\\\\Plugin;\n":"";activeFile=name;renderTabs();updateEditor();closeModal();toast("فایل جدید ساخته شد.")
+}
+$("create-file-confirm").addEventListener("click",createFile);$("new-file-name").addEventListener("keydown",e=>{if(e.key==="Enter")createFile()});
+$("create-project").addEventListener("click",()=>{saveAll(true);go("workspace");toast("محیط پروژه آماده است.")});
+$("theme-toggle").addEventListener("click",()=>{document.body.classList.toggle("light");toast(document.body.classList.contains("light")?"حالت روشن فعال شد.":"حالت تیره فعال شد.")});
+function fakeCommand(){
+ const input=$("fake-command"),cmd=input.value.trim().toLowerCase();if(!cmd)return;
+ if(cmd==="help")addLog("دستورات نمایشی: help, status, files, clear","good");
+ else if(cmd==="status")addLog("DRAXO UI ready. PHP execution: disabled. PHAR builder: not connected.","good");
+ else if(cmd==="files")addLog("Files: "+Object.keys(files).join(", "),"good");
+ else if(cmd==="clear"){$("console-log").innerHTML="";renderBigTerminal()}
+ else addLog("این ترمینال نمایشی است؛ فرمان واقعی اجرا نمی‌شود. برای راهنما help را وارد کن.","info");
+ input.value="";
+}
+$("run-fake-command").addEventListener("click",fakeCommand);$("fake-command").addEventListener("keydown",e=>{if(e.key==="Enter")fakeCommand()});
+document.addEventListener("keydown",e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==="s"){e.preventDefault();saveAll()}if(e.key==="Escape")closeModal()});
+function tick(){$("clock").textContent=new Date().toLocaleTimeString("en-GB",{hour12:false})}tick();setInterval(tick,1000);
+renderTabs();updateEditor();renderFilesTable();renderProjects();renderBigTerminal();
+
+</script>
+</body></html>
